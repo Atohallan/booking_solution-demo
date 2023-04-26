@@ -2,7 +2,7 @@
   <v-container class="fill-height">
     <v-responsive class="d-flex apgn-center text-center fill-height">
       <v-row class="mx-2 my-1">
-        <v-col cols="auto">
+        <v-col cols="12">
           <h1 class="text-h6 font-weight-bold">
             Takk for din bestilling!
           </h1>
@@ -13,7 +13,7 @@
           </div>
         </v-col>
 
-        <v-col cols="10">
+        <v-col cols="12">
             <p class="text-subtitle-1 font-weight-bold">- Regnr.: DP 26090</p>
             <p class="text-subtitle-1 font-weight-bold">- Dato: 17.08.2023</p>
             <p class="text-subtitle-1 font-weight-bold">

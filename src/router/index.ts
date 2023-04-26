@@ -14,24 +14,7 @@ const routes = [
           {
             path: '/',
             name: 'DropList',
-            component: () => import(/* webpackChunkName: "droplist" */ '@/components/DropList.vue'),
-            children: [
-              {
-                path: '/Tjenester',
-                name: 'Tjenester',
-                component: () => import(/* webpackChunkName: "types" */ '@/components/Type.vue'),
-              },
-              {
-                path: '/Tidspunkt',
-                name: 'Tidspunkt',
-                component: () => import(/* webpackChunkName: "calender" */ '@/components/Calender.vue'),
-              },
-              {
-                path: '/Personinformasjon',
-                name: 'Personinformasjon',
-                component: () => import(/* webpackChunkName: "personals" */ '@/components/Personalform.vue'),
-              },
-            ],
+            component: () => import(/* webpackChunkName: "droplist" */ '@/components/DropList.vue')
           },
         ],
       },
