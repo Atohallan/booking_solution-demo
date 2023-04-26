@@ -2,21 +2,19 @@
   <v-radio-group
     v-for="(item, index) in datas"
     :key="index"
-    open-strategy="single"
+    v-model="selectedItem"
+    :name="'radiobox-' + index"
   >
     <div
       style="background-color: #575756; border-radius: 10px"
       class="py-3 px-3"
-      name="radiobox"
     >
-      <v-radio name="radiobox" color="orange">
+      <v-radio :value="item" color="orange">
         <template v-slot:label>
           <v-row>
             <v-col cols="12">
               <div class="text-left" style="color: white">
-                <p class="font-weight-bold">
-                  {{ item.title1 }}
-                </p>
+                <p class="font-weight-bold">{{ item.title1 }}</p>
                 <p class="font-weight-bold">{{ item.title2 }}</p>
                 <p>{{ item.contents }}</p>
                 <p class="text-right" style="color: orange">
@@ -31,12 +29,14 @@
   </v-radio-group>
 </template>
 
-<script lang="ts">
+<script>
 export default {
-  data: function () {
+  data() {
     return {
+      selectedItem: null,
       datas: [
         {
+          id: 1,
           title1: "EU-kontroll opp til 3500kg",
           title2: "titlen kan ta opp til 2 linjer.",
           contents:
@@ -44,6 +44,7 @@ export default {
           number: "1490,-",
         },
         {
+          id: 2,
           title1: "EU-kontroll opp til 3500kg",
           title2: "titlen kan ta opp til 2 linjer.",
           contents:
@@ -51,6 +52,7 @@ export default {
           number: "1490,-",
         },
         {
+          id: 3,
           title1: "EU-kontroll opp til 3500kg",
           title2: "titlen kan ta opp til 2 linjer.",
           contents:
@@ -58,6 +60,7 @@ export default {
           number: "1490,-",
         },
         {
+          id: 4,
           title1: "EU-kontroll opp til 3500kg",
           title2: "titlen kan ta opp til 2 linjer.",
           contents:
