@@ -1,5 +1,8 @@
 # base
 
+![image](https://user-images.githubusercontent.com/129685965/234509998-5b854f52-9c08-4ed5-b078-dec02214d37a.png)
+This is a project that control a booking solution using Vuetify.
+
 ## Project setup
 
 ```
