@@ -12,3 +12,42 @@
 .comp-full-calendar{
     width: auto !important;
 }
+
+input, textarea{
+    background-color: white !important;
+}
+
+.v-field__outline{
+    color: transparent !important;
+}
+
+.v-field__field{
+    border: 2px solid #aaaaaa !important;
+    background-color: white !important;
+    border-radius: 10px !important;
+}
+
+.v-field__input::placeholder{
+    color: black !important;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    background: #FFCC00;
+    color: #000;
+    font-family: 'Poppins';
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.list-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+}

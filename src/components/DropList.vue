@@ -8,19 +8,14 @@
       >
         <v-list-group :value="item.text === seltext">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              v-bind="props"
-              prepend-icon="mdi-account-circle"
-              v-on:click="pushArray(item.text)"
-            >
-              <template v-slot:prepend>
-                <v-icon :icon="item.icon"></v-icon>
-              </template>
-
-              <v-list-item-title
-                v-text="item.text"
-                class="text-left"
-              ></v-list-item-title>
+            <v-list-item v-bind="props" v-on:click="pushArray(item.text)">
+              <div class="list-wrapper">
+                <div class="circle">{{ index + 1 }}</div>
+                <v-list-item-title
+                  v-text="item.text"
+                  class="text-left px-3 font-weight-bold"
+                ></v-list-item-title>
+              </div>
             </v-list-item>
           </template>
 
@@ -38,7 +33,7 @@ export default {
   data: () => ({
     seltext: "123",
     items: [
-      { text: "Tjenester", icon: "mdi-folder" },
+      { text: "Tjenester", icon: "fa-regular fa-circle-1" },
       { text: "Tidspunkt", icon: "mdi-account-multiple" },
       { text: "Personinformasjon", icon: "mdi-star" },
     ],

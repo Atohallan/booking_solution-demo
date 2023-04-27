@@ -1,8 +1,8 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="d-flex align-center text-center fill-height">
-      <v-row class="my-3">
-        <v-col cols="auto" class="mx-2">
+      <v-row class="my-3 mx-1">
+        <v-col cols="auto">
           <h1 class="text-h6 font-weight-bold text-left">Online booking</h1>
 
           <div class="text-subtitle-1 text-left">
@@ -13,10 +13,11 @@
           </div>
         </v-col>
 
-        <v-col cols="12" class="mx-2">
-          <v-text-field :rules="rules" placeholder=" Telefonnummer"
-            >+</v-text-field
-          >
+        <v-col cols="12">
+          <v-text-field
+            :rules="rules"
+            placeholder=" Telefonnummer"
+          ></v-text-field>
         </v-col>
 
         <v-col cols="12">

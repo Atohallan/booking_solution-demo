@@ -1,7 +1,5 @@
 <template>
-  <v-container>
-    <CalenderVue />
-  </v-container>
+  <CalenderVue />
 </template>
 
 <script lang="ts">

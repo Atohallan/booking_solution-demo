@@ -1,7 +1,5 @@
 <template>
-  <v-container>
-    <Personalform />
-  </v-container>
+  <Personalform />
 </template>
 
 <script lang="ts">

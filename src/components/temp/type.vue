@@ -1,7 +1,5 @@
 <template>
-  <v-container>
-    <Type />
-  </v-container>
+  <Type />
 </template>
 
 <script lang="ts">
