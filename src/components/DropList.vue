@@ -1,26 +1,22 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <v-list
-        v-for="(item, index) in items"
-        :key="index"
-        open-strategy="single"
-      >
-        <v-list-group :value="item.text === seltext">
-          <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" v-on:click="pushArray(item.text)">
-              <div class="list-wrapper">
-                <div class="circle">{{ index + 1 }}</div>
-                <v-list-item-title
-                  v-text="item.text"
-                  class="text-left px-3 font-weight-bold"
-                ></v-list-item-title>
-              </div>
-            </v-list-item>
-          </template>
-
-          <temp-view :title="seltext" />
-        </v-list-group>
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in items"
+          :key="index"
+          v-on:click="pushArray(item)"
+          v-model:opened="open"
+        >
+          <div class="list-wrapper">
+            <div class="circle">{{ index + 1 }}</div>
+            <v-list-item-title
+              v-text="item"
+              class="text-left px-3 font-weight-bold"
+            ></v-list-item-title>
+          </div>
+          <temp-view v-if="item === seltext" :title="seltext" />
+        </v-list-item>
       </v-list>
     </v-col>
   </v-row>
@@ -30,13 +26,17 @@
 import TempView from "./Temp.vue";
 
 export default {
+  props: {
+    codeflag: {
+      type: Boolean,
+      required: true,
+    },
+  },
+
   data: () => ({
     seltext: "",
-    items: [
-      { text: "Tjenester", icon: "fa-regular fa-circle-1" },
-      { text: "Tidspunkt", icon: "mdi-account-multiple" },
-      { text: "Personinformasjon", icon: "mdi-star" },
-    ],
+    open: [0],
+    items: ["Tjenester", "Tidspunkt", "Personinformasjon"],
   }),
 
   methods: {
@@ -44,6 +44,19 @@ export default {
       this.seltext = title;
     },
   },
+
+  watch: {
+    codeflag(newValue, oldValue) {
+      console.log(this.codeflag);
+
+      if (newValue !== oldValue && newValue === true) {
+        this.open = [0];
+      } else {
+        this.open = [];
+      }
+    },
+  },
+
   components: {
     TempView,
   },

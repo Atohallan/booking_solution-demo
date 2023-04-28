@@ -21,7 +21,7 @@
         </v-col>
 
         <v-col cols="12">
-          <router-view />
+          <DropList :codeflag="openflag" />
         </v-col>
       </v-row>
     </v-responsive>
@@ -29,6 +29,7 @@
 </template>
 
 <script lang="ts">
+import DropList from "../components/DropList.vue";
 const phoneNumberRegex =
   /^(([0-9]{1,3})-([0-9]{1,3})-([0-9]{3,4})-([0-9]{4,5}))$/;
 
@@ -36,6 +37,7 @@ export default {
   data() {
     return {
       redirect: false,
+      openflag: false,
       rules: [
         (value: string) => !!value || "Required.",
         (value: string) => (value || "").length <= 20 || "Max 20 characters",
@@ -51,6 +53,10 @@ export default {
     };
   },
 
+  mounted() {
+    if (this.$route.params.id) this.openflag = true;
+  },
+
   computed: {
     redirectPath() {
       return "/sms_verifisering";
@@ -63,6 +69,10 @@ export default {
         this.$router.push(this.redirectPath);
       }
     },
+  },
+
+  components: {
+    DropList,
   },
 };
 </script>

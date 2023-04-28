@@ -22,7 +22,7 @@ export default {
 
   methods: {
     onNext: function () {
-      this.$router.push("/sms_verifisering");
+      this.$router.push("/sammendrage");
     },
   },
 };

@@ -9,7 +9,10 @@
         </v-col>
 
         <v-col cols="12">
-          <v-text-field label="Verifiseringskode på sms"></v-text-field>
+          <v-text-field
+            label="Verifiseringskode på sms"
+            v-model="code"
+          ></v-text-field>
         </v-col>
 
         <v-col cols="12">
@@ -30,12 +33,14 @@
 <script lang="ts">
 export default {
   data: () => ({
-    items: [],
+    code: "",
   }),
 
   methods: {
     onPrev: function () {
-      this.$router.push("/");
+      this.$router.push({
+        path: `/${this.code}`,
+      });
     },
   },
 };

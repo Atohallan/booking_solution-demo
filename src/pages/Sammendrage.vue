@@ -67,7 +67,7 @@ export default {
 
   methods: {
     onPrev: function () {
-      this.$router.push("/sms_verifisering");
+      this.$router.push("/");
     },
     onNext: function () {
       this.$router.push("/becreftelse");
