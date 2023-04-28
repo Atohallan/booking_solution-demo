@@ -1,21 +1,24 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <v-list>
+      <v-list v-model:opened="open">
         <v-list-item
           v-for="(item, index) in items"
           :key="index"
           v-on:click="pushArray(item)"
-          v-model:opened="open"
         >
-          <div class="list-wrapper">
-            <div class="circle">{{ index + 1 }}</div>
-            <v-list-item-title
-              v-text="item"
-              class="text-left px-3 font-weight-bold"
-            ></v-list-item-title>
-          </div>
-          <temp-view v-if="item === seltext" :title="seltext" />
+          <v-list-group :value="item">
+            <template v-slot:activator="{ props }">
+              <div class="list-wrapper">
+                <div class="circle">{{ index + 1 }}</div>
+                <v-list-item-title
+                  v-text="item"
+                  class="text-left px-3 font-weight-bold"
+                ></v-list-item-title>
+              </div>
+              <temp-view v-if="item === seltext" :title="seltext" />
+            </template>
+          </v-list-group>
         </v-list-item>
       </v-list>
     </v-col>
