@@ -18,7 +18,7 @@
             rounded="xl"
             size="x-large"
             color="amber"
-            v-on:click="onNext()"
+            v-on:click="onPrev()"
             >Verifiser</v-btn
           >
         </v-col>
@@ -34,8 +34,8 @@ export default {
   }),
 
   methods: {
-    onNext: function () {
-      this.$router.push("/sammendrage");
+    onPrev: function () {
+      this.$router.push("/");
     },
   },
 };
