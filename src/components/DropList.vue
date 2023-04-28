@@ -31,7 +31,7 @@ import TempView from "./Temp.vue";
 
 export default {
   data: () => ({
-    seltext: "123",
+    seltext: "",
     items: [
       { text: "Tjenester", icon: "fa-regular fa-circle-1" },
       { text: "Tidspunkt", icon: "mdi-account-multiple" },

@@ -5,7 +5,7 @@
         <v-col cols="auto">
           <h1 class="text-h6 font-weight-bold text-left">Online booking</h1>
 
-          <div class="text-subtitle-1 text-left">
+          <div style="text-align: left">
             Her kan du enkelt velge tjenester og legge inn bookinger enkelt fra
             din egen stue eller fra hytta. Du vil motta en bekreftelses SMS så
             snart vår verkstedsmester har sett på bookingen din. Du får også en
@@ -16,7 +16,7 @@
         <v-col cols="12">
           <v-text-field
             :rules="rules"
-            placeholder=" Telefonnummer"
+            placeholder="Telefonnummer"
           ></v-text-field>
         </v-col>
 
@@ -29,19 +29,40 @@
 </template>
 
 <script lang="ts">
+const phoneNumberRegex =
+  /^(([0-9]{1,3})-([0-9]{1,3})-([0-9]{3,4})-([0-9]{4,5}))$/;
+
 export default {
-  data: () => ({
-    rules: [
-      (value: string) => !!value || "Required.",
-      (value: string) => (value || "").length <= 20 || "Max 20 characters",
-      (value: string) => {
-        const pattern =
-          /^(([0-9]{1,3})-([0-9]{1,3})-([0-9]{1,4})-([0-9]{1,5}))$/;
-        return (
-          pattern.test(value) || "Invalid phone number. ex. 12-123-123-1231"
-        );
-      },
-    ],
-  }),
+  data() {
+    return {
+      redirect: false,
+      rules: [
+        (value: string) => !!value || "Required.",
+        (value: string) => (value || "").length <= 20 || "Max 20 characters",
+        function (this: any, value: string) {
+          if (phoneNumberRegex.test(value)) {
+            this.redirect = true;
+            return true;
+          } else {
+            return "Invalid phone number. ex. 12-123-123-1231";
+          }
+        }.bind(this),
+      ],
+    };
+  },
+
+  computed: {
+    redirectPath() {
+      return "/sms_verifisering";
+    },
+  },
+
+  watch: {
+    redirect(newValue) {
+      if (newValue) {
+        this.$router.push(this.redirectPath);
+      }
+    },
+  },
 };
 </script>
