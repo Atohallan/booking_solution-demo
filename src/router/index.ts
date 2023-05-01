@@ -7,31 +7,24 @@ const routes = [
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       {
-        path: '/:id',
+        path: '/',
         name: 'Home',
-        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-        children: [
-          {
-            path: '/',
-            name: 'DropList',
-            component: () => import(/* webpackChunkName: "droplist" */ '@/components/DropList.vue')
-          },
-        ],
+        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
       },
       {
-        path: '/sms_verifisering',
+        path: '/phone',
+        name: 'Phone',
+        component: () => import(/* webpackChunkName: "sms_verifisering" */ '@/pages/Phone.vue'),
+      },
+      {
+        path: '/sms_verifisering/:id',
         name: 'SMS-verifisering',
         component: () => import(/* webpackChunkName: "sms_verifisering" */ '@/pages/Smsverifisering.vue'),
       },
       {
-        path: '/sammendrage',
-        name: 'Sammendrage',
-        component: () => import(/* webpackChunkName: "Sammendrage" */ '@/pages/Sammendrage.vue'),
-      },
-      {
-        path: '/becreftelse',
-        name: 'Bekreftelse',
-        component: () => import(/* webpackChunkName: "becreftelse" */ '@/pages/Becreftelse.vue'),
+        path: '/services',
+        name: 'services',
+        component: () => import(/* webpackChunkName: "Sammendrage" */ '@/components/DropList.vue'),
       }
     ],
   },

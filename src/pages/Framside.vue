@@ -1,11 +1,14 @@
 <template>
-  <v-container class="fill-height">
-    <v-responsive class="d-flex align-center text-center fill-height">
+  <v-container class="text-center m-13vh content-wrap">
+    <v-responsive class="d-flex align-center">
       <v-row class="my-3 mx-1">
-        <v-col cols="auto">
-          <h1 class="text-h6 font-weight-bold text-left">Online booking</h1>
+        <v-col cols="12" class="d-flex justify-center">
+          <v-img contain width="100" height="100" src="@/assets/image5.png" />
+        </v-col>
+        <v-col cols="12">
+          <h1 class="text-h6 font-weight-bold my-2">Online booking</h1>
 
-          <div style="text-align: left">
+          <div>
             Her kan du enkelt velge tjenester og legge inn bookinger enkelt fra
             din egen stue eller fra hytta. Du vil motta en bekreftelses SMS så
             snart vår verkstedsmester har sett på bookingen din. Du får også en
@@ -14,14 +17,9 @@
         </v-col>
 
         <v-col cols="12">
-          <v-text-field
-            :rules="rules"
-            placeholder="Telefonnummer"
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12">
-          <DropList :codeflag="openflag" />
+          <v-btn block rounded="xl" color="amber" v-on:click="onNext()"
+            >Booking</v-btn
+          >
         </v-col>
       </v-row>
     </v-responsive>
@@ -29,50 +27,11 @@
 </template>
 
 <script lang="ts">
-import DropList from "../components/DropList.vue";
-const phoneNumberRegex =
-  /^(([0-9]{1,3})-([0-9]{1,3})-([0-9]{3,4})-([0-9]{4,5}))$/;
-
 export default {
-  data() {
-    return {
-      redirect: false,
-      openflag: false,
-      rules: [
-        (value: string) => !!value || "Required.",
-        (value: string) => (value || "").length <= 20 || "Max 20 characters",
-        function (this: any, value: string) {
-          if (phoneNumberRegex.test(value)) {
-            this.redirect = true;
-            return true;
-          } else {
-            return "Invalid phone number. ex. 12-123-123-1231";
-          }
-        }.bind(this),
-      ],
-    };
-  },
-
-  mounted() {
-    if (this.$route.params.id) this.openflag = true;
-  },
-
-  computed: {
-    redirectPath() {
-      return "/sms_verifisering";
+  methods: {
+    onNext: function () {
+      this.$router.push("/phone");
     },
-  },
-
-  watch: {
-    redirect(newValue) {
-      if (newValue) {
-        this.$router.push(this.redirectPath);
-      }
-    },
-  },
-
-  components: {
-    DropList,
   },
 };
 </script>

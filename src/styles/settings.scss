@@ -9,49 +9,113 @@
 //   $color-pack: false
 // );
 
-.comp-full-calendar{
-    width: auto !important;
+.comp-full-calendar {
+  width: auto !important;
 }
 
-input, textarea{
-    background-color: white !important;
+input,
+textarea {
+  background-color: white !important;
 }
 
-.v-field__outline{
-    color: transparent !important;
+.v-field__outline {
+  color: transparent !important;
 }
 
-.v-field__field{
-    border: 2px solid #aaaaaa !important;
-    background-color: white !important;
-    border-radius: 10px !important;
+.v-field__field {
+  border: 2px solid #aaaaaa !important;
+  background-color: white !important;
+  border-radius: 10px !important;
 }
 
-.v-field__input::placeholder{
-    color: black !important;
+.v-calender-field{
+  border: 2px solid #ffffff !important;
+}
+
+.v-field__input::placeholder {
+  color: black !important;
 }
 
 .circle {
-    border-radius: 50%;
-    width: 34px;
-    height: 34px;
-    padding: 5px;
-    background: #FFCC00;
-    color: #000;
-    font-family: 'Poppins';
-    align-items: center;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 24px;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  padding: 5px;
+  background: #ffcc00;
+  color: #000;
+  font-family: "Poppins";
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
 }
 
 .list-wrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
 }
 
-.v-list-item{
-    border-bottom: 1px solid #eee;
+.v-list {
+  border-bottom: 1px solid #eee !important;
+  padding: 10px 0 !important;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.d-content {
+  display: contents !important;
+}
+
+.m-13vh {
+  margin: 13vh 0;
+}
+
+.bottom-style {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  right: 0;
+  left: 0;
+  height: 0.5rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.p-0 {
+  padding: 10px 0 !important;
+}
+
+.content-wrap {
+  padding-bottom: 3rem; /* Footer height */
+}
+
+.v-selection-control__input > input[type="radio"] {
+  color: #ffcc00 !important;
+
+  &:hover {
+    background-color: #ffcc00;
+  }
+}
+
+.border-grey {
+  border: 1px solid gray !important;
+}
+
+.font-grey {
+  color: grey;
+}
+
+.p-6-12 {
+  padding: 6px 12px !important;
 }
