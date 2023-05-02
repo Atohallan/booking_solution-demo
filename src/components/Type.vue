@@ -1,12 +1,11 @@
 <template>
-  <v-radio-group v-model="selectedItem">
+  <v-radio-group v-model="selectedItem" v-if="clickedbtn === false">
     <v-radio
       v-for="(option, index) in items"
       :key="index"
       :value="option.id"
       color="orange"
       class="my-2 border-grey rounded-lg"
-      v-if="clickedbtn === false"
     >
       <template v-slot:label>
         <v-row>
@@ -23,14 +22,7 @@
         </v-row>
       </template>
     </v-radio>
-    <v-btn
-      block
-      rounded
-      color="amber"
-      @click="onSubmit"
-      v-if="clickedbtn === false"
-      >Fortsette</v-btn
-    >
+    <v-btn block rounded color="amber" @click="onSubmit">Fortsette</v-btn>
   </v-radio-group>
 </template>
 
@@ -55,6 +47,7 @@ export default {
   },
 
   mounted() {
+    this.$emit("clear1", "Tjenester");
     for (let index = 0; index < 4; index++) {
       this.items.push({
         id: index,

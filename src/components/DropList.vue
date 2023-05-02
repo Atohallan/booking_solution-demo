@@ -18,9 +18,11 @@
           v-if="item.text === seltext"
           :title="seltext"
           @skip1="onPushService"
+          @onclear1="onclear1"
           @skip2="onSelectedCalender"
+          @onclear2="onclear2"
           @skip3="onUserInfo"
-          ref="ComputedRef"
+          ref="onList"
         />
 
         <div
@@ -36,7 +38,7 @@
               {{ item.selectedvalue.type_price }}
             </p>
           </div>
-          <v-btn block rounded color="white" @click="onClear1">Endring</v-btn>
+          <v-btn block rounded color="white">Endring</v-btn>
         </div>
 
         <div v-if="item.text === 'Tidspunkt' && item.selectedDate !== ''">
@@ -48,7 +50,7 @@
               {{ item.selectedDate }}
             </p>
           </div>
-          <v-btn block rounded color="white" @click="onClear2">Endring</v-btn>
+          <v-btn block rounded color="white">Endring</v-btn>
         </div>
       </v-list>
       <Becreftelse :booking_data="items" v-else />
@@ -70,10 +72,6 @@ interface Item {
   selectedDate?: string;
   userInfo?: string[];
 }
-
-// interface ComputedRef {
-//   onCancel1: () => void;
-// }
 
 export default {
   data() {
@@ -119,6 +117,38 @@ export default {
       this.selectedItems = item.text;
     },
 
+    onclear1(value: any): void {
+      if (value === "Tjenester") {
+        const newItems1 = this.items.map((item) =>
+          item.text === "Tjenester"
+            ? {
+                ...item,
+                selectedvalue: {
+                  selectedIndex: -1,
+                  type_price: -1,
+                  selectedItemTitle: "",
+                },
+              }
+            : item
+        );
+        this.items = newItems1;
+      }
+    },
+
+    onclear2(value: any): void {
+      if (value === "Tjenester") {
+        const newItems1 = this.items.map((item) =>
+          item.text === "Tjenester"
+            ? {
+                ...item,
+                selectedDate: "",
+              }
+            : item
+        );
+        this.items = newItems1;
+      }
+    },
+
     onPushService(value: Item["selectedvalue"]): void {
       if (!value) return;
       const newItems1 = this.items.map((item) =>
@@ -143,30 +173,6 @@ export default {
       this.items = newItems3;
       this.completed = true;
       console.log(this.items);
-    },
-
-    async onClear1(): Promise<void> {
-      if (this.selectedItems === "Tjenester") {
-        console.log("ComputedRef", this.$refs.ComputedRef); // Check if ComputedRef exists
-        const myRef: any = await this.$refs.ComputedRef;
-        console.log("myRef", myRef); // Check if myRef is defined
-        if (myRef && myRef.onCancel1) {
-          myRef.onCancel1();
-        } else {
-          console.error("Unable to call onCancel1()");
-        }
-      }
-    },
-
-    async onClear2(): Promise<void> {
-      if (this.selectedItems === "Tidspunkt") {
-        const myRef: any = await this.$refs.ComputedRef;
-        if (myRef && myRef.onCancel2) {
-          myRef.onCancel2();
-        } else {
-          console.error("Unable to call onCancel2()");
-        }
-      }
     },
   },
 

@@ -1,9 +1,17 @@
 <template>
   <v-container v-if="title === 'Tjenester'" class="p-0">
-    <Type @service-types="onPushService" ref="TypeRef" />
+    <Type
+      @service-types="onPushService"
+      @clear1="onServiceClear"
+      ref="TypeRef"
+    />
   </v-container>
   <v-container v-else-if="title === 'Tidspunkt'" class="p-0">
-    <Calendar @selected-calender="onSelectedCalender" ref="CalenderRef" />
+    <Calendar
+      @selected-calender="onSelectedCalender"
+      @clear2="onCalenderClear"
+      ref="CalenderRef"
+    />
   </v-container>
   <v-container v-else class="p-0">
     <Personalform @userInfo="onUserInfo" />
@@ -19,27 +27,27 @@ export default {
   props: ["title"],
 
   methods: {
+    //Service Controlling
     onPushService: function (value: any) {
       this.$emit("skip1", value);
     },
+
+    onServiceClear: function (value: any) {
+      this.$emit("onclear1", value);
+    },
+
+    //Calender Controlling
     onSelectedCalender: function (value: any) {
       this.$emit("skip2", value);
     },
+
+    onCalenderClear: function (value: any) {
+      this.$emit("onclear2", value);
+    },
+
+    //Personal_Info Controlling
     onUserInfo: function (value: any) {
       this.$emit("skip3", value);
-    },
-    onCancel1: function () {
-      console.log("qwe");
-
-      // const typeRef = this.$refs.TypeRef as { onCancel: () => void };
-      // typeRef.onCancel();
-    },
-
-    onCancel2: function () {
-      console.log("qwe");
-
-      // const typeRef = this.$refs.CalenderRef as { onCancel: () => void };
-      // typeRef.onCancel();
     },
   },
 

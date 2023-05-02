@@ -1,7 +1,7 @@
 <template>
   <div class="bg-color-primary rounded-lg" style="overflow-x: hidden">
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" v-if="clickedbtn === false">
         <p class="text-h6 font-weight-bold text-left px-2 py-2">
           Velg tidspunkt
         </p>
@@ -12,14 +12,7 @@
           append-inner-icon="mdi-calendar-blank-outline"
           @click:append-inner="onClick"
         ></v-text-field>
-        <v-btn
-          block
-          rounded
-          color="amber"
-          @click="onSubmit"
-          v-if="clickedbtn === false"
-          >Fortsette</v-btn
-        >
+        <v-btn block rounded color="amber" @click="onSubmit">Fortsette</v-btn>
         <v-dialog v-model="showDialog">
           <v-card>
             <vue-cal
