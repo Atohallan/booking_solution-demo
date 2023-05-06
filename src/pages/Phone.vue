@@ -16,7 +16,6 @@
             >+</v-text-field
           >
         </v-col>
-        
 
         <v-col cols="12">
           <v-btn block rounded="xl" color="amber" v-on:click="onNext()"
